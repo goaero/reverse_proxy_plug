@@ -296,14 +296,7 @@ defmodule ReverseProxyPlug do
   end
 
   defp normalize_headers(headers) do
-    headers
-    |> downcase_headers
-    |> remove_hop_by_hop_headers
-  end
-
-  defp downcase_headers(headers) do
-    headers
-    |> Enum.map(fn {header, value} -> {String.downcase(header), value} end)
+    remove_hop_by_hop_headers(headers)
   end
 
   defp remove_hop_by_hop_headers(headers) do
